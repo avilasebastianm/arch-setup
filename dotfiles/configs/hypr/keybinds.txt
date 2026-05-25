@@ -1,0 +1,111 @@
+ HYPRLAND — ATAJOS DE TECLADO
+══════════════════════════════════════════════════
+
+  APLICACIONES
+  ─────────────────────────────────────────────
+  Super + Q          Abrir terminal (kitty)
+  Super + R          Abrir launcher (Rofi)
+  Super + F          Abrir gestor de archivos (Yazi)
+  Super + E          Abrir spf
+  Super + C          Cerrar ventana activa
+
+  VENTANAS
+  ─────────────────────────────────────────────
+  Super + V          Togglear flotante
+  Super + ←↑↓→       Mover foco entre ventanas
+
+  ESCRITORIOS
+  ─────────────────────────────────────────────
+  Super + 1-10       Ir al escritorio
+  Super + Shift + 1-10   Mover ventana al escritorio
+
+  SISTEMA
+  ─────────────────────────────────────────────
+  Super + M          Salir de Hyprland
+  F1                 Mostrar este cheatsheet
+
+  NEOVIM — GENERAL
+  ─────────────────────────────────────────────
+  Space              Leader key
+  Space + w          Guardar archivo
+  Space + q          Salir
+  jk (insert)        Volver a modo normal
+  Ctrl + a           Seleccionar todo
+
+  NEOVIM — VENTANAS Y TABS
+  ─────────────────────────────────────────────
+  Space + sh         Split horizontal
+  Space + sv         Split vertical
+  Ctrl + h/j/k/l     Navegar entre splits
+  Ctrl + ←↑↓→        Redimensionar split
+  Tab                Siguiente buffer/tab
+  Shift + Tab        Buffer/tab anterior
+  Space + x          Cerrar buffer
+  Alt + p            Pinear buffer
+  te                 Nueva pestaña
+
+  NEOVIM — ARCHIVOS (Snacks)
+  ─────────────────────────────────────────────
+  Space + Space      Buscar archivos (smart)
+  Space + ff         Buscar archivos
+  Space + fr         Archivos recientes
+  Space + fg         Archivos git
+  Space + fp         Proyectos
+  Space + /          Buscar texto (grep)
+  Space + e          Explorador de archivos
+  Space + ,          Buffers abiertos
+
+  NEOVIM — GIT
+  ─────────────────────────────────────────────
+  Space + gs         Git status
+  Space + gl         Git log
+  Space + gb         Git branches
+  Space + gd         Git diff
+
+  NEOVIM — LSP
+  ─────────────────────────────────────────────
+  K                  Ver documentación
+  gd                 Ir a definición
+  gr                 Ver referencias
+  Space + ca         Code action
+  Space + ss         Símbolos LSP
+
+  NEOVIM — INDENTADO
+  ─────────────────────────────────────────────
+  > (visual)         Indentar
+  < (visual)         Desindentar
+  + / -              Incrementar / decrementar número
+
+  YAZI — NAVEGACIÓN
+  ─────────────────────────────────────────────
+  h / l              Salir / entrar carpeta
+  j / k              Bajar / subir
+  Enter              Abrir archivo
+  q                  Salir
+
+  YAZI — SELECCIÓN
+  ─────────────────────────────────────────────
+  Space              Seleccionar archivo (toggle)
+  v                  Modo selección visual
+  V                  Seleccionar todo
+  Escape             Deseleccionar todo
+
+  YAZI — OPERACIONES
+  ─────────────────────────────────────────────
+  y                  Copiar
+  x                  Cortar
+  p                  Pegar
+  d                  Borrar a papelera
+  D                  Borrar permanente
+  r                  Renombrar
+  a                  Crear archivo/carpeta (/ al final = carpeta)
+  .                  Mostrar/ocultar archivos ocultos
+
+  YAZI — BÚSQUEDA
+  ─────────────────────────────────────────────
+  f                  Buscar en carpeta actual
+  F                  Buscar recursivo
+  /                  Filtrar por nombre
+  z                  Saltar carpeta con zoxide
+
+══════════════════════════════════════════════════

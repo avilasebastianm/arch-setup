@@ -1,0 +1,101 @@
+* {
+    bg:         #1e1e2e;
+    bg-alt:     #2a2a3d;
+    bg-hover:   #313145;
+    fg:         #cdd6f4;
+    fg-dim:     #6c7086;
+    accent:     #50fa7b;
+    border-col: #313145;
+
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "JetBrainsMono NF 11";
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-color:     @border-col;
+    border-radius:    14px;
+    width:            560px;
+    padding:          12px;
+    location:         center;
+    anchor:           center;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing:          8px;
+    children:         [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    10px;
+    padding:          8px 12px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: @accent;
+    text-color:       @bg;
+    border-radius:    6px;
+    padding:          2px 8px;
+    font:             "JetBrainsMono NF Bold 10";
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg;
+    placeholder:      "Buscar...";
+    placeholder-color: @fg-dim;
+    cursor:           text;
+}
+
+listview {
+    background-color: transparent;
+    columns:          2;
+    lines:            5;
+    spacing:          4px;
+    scrollbar:        false;
+    layout:           vertical;
+    fixed-height:     true;
+}
+
+element {
+    background-color: transparent;
+    border-radius:    8px;
+    padding:          8px 10px;
+    spacing:          10px;
+    orientation:      horizontal;
+    children:         [ element-icon, element-text ];
+}
+
+element normal.normal {
+    background-color: transparent;
+}
+
+element selected.normal {
+    background-color: @bg-hover;
+    text-color:       @fg;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             32px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+    highlight:        bold #50fa7b;
+}
+
+scrollbar {
+    background-color: @bg-alt;
+    handle-color:     @fg-dim;
+    handle-width:     4px;
+    border-radius:    4px;
+}

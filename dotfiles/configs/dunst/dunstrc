@@ -1,0 +1,124 @@
+[global]
+    monitor    = 0
+    follow     = mouse
+
+    # ── Posición y tamaño ────────────────────────────────────────────────────
+    width           = (0, 380)
+    height          = (0, 250)
+    origin          = top-right
+    offset          = 18x50
+    notification_limit = 4
+    gap_size        = 8
+
+    # ── Apariencia general ───────────────────────────────────────────────────
+    corner_radius      = 14
+    frame_width        = 2
+    frame_color        = "#bd93f9"
+    separator_height   = 1
+    separator_color    = "#44475a"
+
+    padding            = 16
+    horizontal_padding = 18
+    text_icon_padding  = 14
+
+    # Transparencia: 0 = opaco, 100 = invisible
+    # Se combina con el alpha del background color
+    transparency = 0
+
+    # ── Tipografía ───────────────────────────────────────────────────────────
+    font        = JetBrainsMono Nerd Font 10
+    line_height = 3
+
+    markup   = full
+    # Formato: icono de app coloreado + título bold + cuerpo suave
+    format   = "<span foreground='#bd93f9' font_weight='bold'>%a</span>\n<b><span foreground='#f8f8f2'>%s</span></b>\n<span foreground='#bfbfbf'>%b</span>"
+
+    alignment          = left
+    vertical_alignment = center
+    word_wrap          = yes
+    ellipsize          = end
+    ignore_newline     = no
+    show_indicators    = no
+    stack_duplicates   = true
+    hide_duplicate_count = false
+
+    # ── Iconos ───────────────────────────────────────────────────────────────
+    enable_recursive_icon_lookup = true
+    icon_position  = left
+    min_icon_size  = 48
+    max_icon_size  = 64
+    icon_theme     = "Papirus-Dark, Adwaita"
+
+    # ── Barra de progreso ────────────────────────────────────────────────────
+    progress_bar              = true
+    progress_bar_height       = 6
+    progress_bar_frame_width  = 0
+    progress_bar_min_width    = 200
+    progress_bar_max_width    = 320
+    progress_bar_corner_radius = 3
+
+    # ── Historia y acciones ──────────────────────────────────────────────────
+    sticky_history   = yes
+    history_length   = 30
+    dmenu            = /usr/bin/rofi -dmenu -p "Notificaciones"
+    browser          = /usr/bin/xdg-open
+
+    # ── Mouse ────────────────────────────────────────────────────────────────
+    mouse_left_click   = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click  = close_all
+
+    # ── Wayland / Hyprland ───────────────────────────────────────────────────
+    force_xwayland = false
+    layer          = top
+
+
+# ── Urgencia BAJA — borde gris azulado, fondo muy oscuro ────────────────────
+[urgency_low]
+    background   = "#1a1b26e6"
+    foreground   = "#bfbfbf"
+    frame_color  = "#44475a"
+    timeout      = 4
+    format       = "<span foreground='#6272a4' font_weight='bold'>%a</span>\n<span foreground='#bfbfbf'>%s</span>\n<span foreground='#6272a4' size='small'>%b</span>"
+
+
+# ── Urgencia NORMAL — borde violeta Dracula, fondo oscuro semitransparente ───
+[urgency_normal]
+    background   = "#282a36e6"
+    foreground   = "#f8f8f2"
+    frame_color  = "#bd93f9"
+    timeout      = 6
+    format       = "<span foreground='#bd93f9' font_weight='bold'>%a</span>\n<b><span foreground='#f8f8f2'>%s</span></b>\n<span foreground='#bfbfbf'>%b</span>"
+
+
+# ── Urgencia CRÍTICA — borde rojo, fondo casi opaco, sin timeout ─────────────
+[urgency_critical]
+    background   = "#1a1b26f5"
+    foreground   = "#ff5555"
+    frame_color  = "#ff5555"
+    timeout      = 0
+    format       = "<span foreground='#ff5555' font_weight='bold'> %a</span>\n<b><span foreground='#ff5555'>%s</span></b>\n<span foreground='#f8f8f2'>%b</span>"
+
+
+# ── Regla: ejecutar script en todas las notificaciones ───────────────────────
+[random_icon]
+    summary = "*"
+    script  = /home/seba-dev/.config/dunst/random-skull.sh
+
+
+# ── Reglas por app ────────────────────────────────────────────────────────────
+
+[spotify]
+    appname     = "Spotify"
+    frame_color = "#1db954"
+    format      = "<span foreground='#1db954' font_weight='bold'> Spotify</span>\n<b><span foreground='#f8f8f2'>%s</span></b>\n<span foreground='#bfbfbf'>%b</span>"
+
+[volume]
+    appname     = "Volume"
+    frame_color = "#8be9fd"
+    format      = "<span foreground='#8be9fd' font_weight='bold'>󰕾 %s</span>\n<span foreground='#bfbfbf'>%b</span>"
+
+[screenshot]
+    summary     = "*captura*"
+    frame_color = "#50fa7b"
+    format      = "<span foreground='#50fa7b' font_weight='bold'> Captura guardada</span>\n<span foreground='#bfbfbf'>%b</span>"

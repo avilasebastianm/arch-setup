@@ -1,0 +1,70 @@
+add_newline = false
+command_timeout = 1000
+
+format = """
+[](fg:#00AABB)[ $username ](bg:#00AABB fg:#000000 bold)[](fg:#00AABB bg:#005F87)[ $directory ](bg:#005F87 fg:#FFFFFF)[](fg:#005F87 bg:#3B3B6D)$git_branch$git_status[](fg:#3B3B6D)$character """
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "bg:#00AABB fg:#000000 bold"
+style_root = "bg:#FF0000 fg:#FFFFFF bold"
+disabled = false
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+style = "bg:#005F87 fg:#FFFFFF"
+read_only = "  "
+read_only_style = "bg:#005F87 fg:#FF5555"
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol = "~"
+
+[git_branch]
+format = "[ $branch ](bg:#3B3B6D fg:#FFCC00)"
+symbol = " "
+truncation_symbol = "…/"
+style = "bg:#3B3B6D"
+
+[git_status]
+format = "([ $all_status$ahead_behind ](bg:#3B3B6D fg:#FF8800))"
+style = "bg:#3B3B6D"
+conflicted = "🏳"
+up_to_date = ""
+untracked = " "
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+stashed = " "
+modified = " "
+staged = "++ "
+renamed = " "
+deleted = " "
+
+[character]
+success_symbol = "[ ](bold fg:#00FF88)"
+error_symbol = "[ ](bold fg:#FF5555)"
+
+[hostname]
+disabled = true
+
+[env_var]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[terraform]
+disabled = true
+
+[python]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ruby]
+disabled = true
+
+[docker_context]
+disabled = true

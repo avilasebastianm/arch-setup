@@ -1,0 +1,28 @@
+# Historial de zsh
+home/.zsh_history
+home/zhistory
+home/zcompdump*
+
+# Cache y temporales
+configs/nvim/lazy-lock.json
+configs/nvim/.cache/
+configs/**/*.log
+configs/**/*.bak
+configs/**/*backup*
+configs/**/*Copy*
+
+# Kitty bak
+configs/kitty/*.bak
+
+# Waybar backups
+configs/waybar/*backup*
+configs/waybar/*Copy*
+
+# Secrets / tokens (por si acaso)
+**/.env
+**/secrets*
+**/token*
+
+# Sistema
+.DS_Store
+Thumbs.db

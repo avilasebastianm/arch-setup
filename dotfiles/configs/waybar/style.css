@@ -1,0 +1,162 @@
+* {
+  min-height: 0;
+  min-width: 0;
+  font-family: "JetBrainsMono NF", "JetBrainsMono NFP", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background-color: #1A1B26;
+  border-radius: 8px;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+
+/* ── Workspaces ─────────────────────────────────────── */
+#workspaces {
+  background: transparent;
+  padding: 0 2px;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  margin: 5px 2px;
+  background: transparent;
+  color: #3b3f5c;
+  font-size: 26px;
+  min-width: 0;
+  border-radius: 50%;
+}
+
+#workspaces button:hover {
+  background: rgba(122, 162, 247, 0.12);
+}
+
+#workspaces button:nth-child(1)  { color: #f7768e; }
+#workspaces button:nth-child(2)  { color: #ff9e64; }
+#workspaces button:nth-child(3)  { color: #e0af68; }
+#workspaces button:nth-child(4)  { color: #9ece6a; }
+#workspaces button:nth-child(5)  { color: #7dcfff; }
+#workspaces button:nth-child(6)  { color: #7aa2f7; }
+#workspaces button:nth-child(7)  { color: #bb9af7; }
+#workspaces button:nth-child(8)  { color: #f7768e; }
+#workspaces button:nth-child(9)  { color: #ff9e64; }
+#workspaces button:nth-child(10) { color: #e0af68; }
+
+#workspaces button.active {
+  opacity: 1;
+  font-size: 34px;
+  color: #FFE000;
+}
+
+#workspaces button.visible:not(.active) {
+  opacity: 1;
+  font-size: 34px;
+}
+
+#workspaces button:not(.active):not(.visible) {
+  opacity: 0.45;
+}
+
+#workspaces button.persistent:not(.active):not(.visible):not(.empty) {
+  opacity: 0.85;
+  font-size: 22px;
+  color: #0A9CF5;
+}
+
+#workspaces button.urgent {
+  color: #f7768e;
+  opacity: 1;
+}
+
+/* ── Module box base ────────────────────────────────── */
+#custom-logo,
+#custom-cpu,
+#custom-gpu,
+#memory,
+#network,
+#pulseaudio,
+#clock,
+#tray,
+#mpris,
+#custom-notification,
+#custom-power {
+  padding: 2px 10px;
+  margin: 4px 2px;
+  border-radius: 6px;
+  background-color: #222330;
+}
+
+/* ── Separator ──────────────────────────────────────── */
+#custom-sep {
+  color: #2d3047;
+  padding: 0;
+  margin: 0 2px;
+  font-size: 14px;
+  background: transparent;
+}
+
+/* ── Per-module colors ──────────────────────────────── */
+#custom-logo {
+  color: #0A9CF5;
+  font-size: 18px;
+  padding: 2px 14px;
+}
+
+#custom-cpu {
+  color: #7aa2f7;
+}
+
+#custom-gpu {
+  color: #e0af68;
+}
+
+#memory {
+  color: #9ece6a;
+}
+
+#network {
+  color: #7dcfff;
+}
+
+#pulseaudio {
+  color: #bb9af7;
+}
+
+#pulseaudio.muted {
+  color: #565f89;
+}
+
+#clock {
+  color: #7aa2f7;
+}
+
+#mpris {
+  color: #9ece6a;
+}
+
+#mpris.paused {
+  color: #565f89;
+}
+
+#custom-notification {
+  color: #7aa2f7;
+}
+
+#custom-power {
+  color: #f7768e;
+}
+
+#tray > * {
+  padding: 0 2px;
+}
+
+tooltip {
+  background-color: #16161e;
+  border: 1px solid #3b3f5c;
+  border-radius: 6px;
+  color: #a9b1d6;
+}
