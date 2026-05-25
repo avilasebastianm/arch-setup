@@ -90,9 +90,8 @@ efibootmgr  (solo UEFI)
 Si también querés aplicar los dotfiles (Hyprland, Waybar, Neovim, etc.):
 
 ```bash
-cd ../archTheme
-chmod +x install.sh
-./install.sh
+cd ../dotfiles
+bash install.sh
 ```
 
 ## Compatibilidad
