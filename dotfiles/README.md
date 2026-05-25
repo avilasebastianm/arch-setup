@@ -16,8 +16,8 @@ Configuración de Arch Linux con Hyprland.
 ## Instalación
 
 ```bash
-git clone https://github.com/avilasebastianm/arch-custom.git
-cd arch-custom/archTheme
+git clone https://github.com/avilasebastianm/arch-setup.git
+cd arch-setup/dotfiles
 chmod +x install.sh
 ./install.sh
 ```

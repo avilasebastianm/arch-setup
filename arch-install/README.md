@@ -11,8 +11,8 @@ Instalador interactivo y guiado para Arch Linux. Hace preguntas en cada paso, ex
 ## Uso
 
 ```bash
-git clone https://github.com/avilasebastianm/arch-custom.git
-cd arch-custom/archInstall
+git clone https://github.com/avilasebastianm/arch-setup.git
+cd arch-setup/arch-install
 chmod +x install.sh
 ./install.sh
 ```
