@@ -64,7 +64,9 @@ curl -L https://raw.githubusercontent.com/avilasebastianm/arch-setup/main/arch-i
 
 ## Capturas
 
-> Hyprland · Waybar · Dunst con iconos pixel art aleatorios
+> Escritorio con los dotfiles instalados — Hyprland · Waybar · Kitty · Rofi
+
+![Captura del escritorio con los dotfiles instalados](assets/capture.png)
 
 ---
 
