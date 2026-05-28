@@ -91,6 +91,24 @@ for cfg_dir in hypr waybar; do
     fi
 done
 
+# ─── 9. Splash de Borges ─────────────────────────────────────────────────────
+log "Configurando splash aleatorio de Borges..."
+
+SPLASH_LINE="~/.config/hypr/splash.sh"
+PROFILE_FILE="${HOME}/.bash_profile"
+[[ -f "${HOME}/.zprofile" ]] && PROFILE_FILE="${HOME}/.zprofile"
+
+if ! grep -q "hypr/splash.sh" "$PROFILE_FILE" 2>/dev/null; then
+    echo "" >> "$PROFILE_FILE"
+    echo "# Genera splash aleatorio de Borges para Hyprland" >> "$PROFILE_FILE"
+    echo "$SPLASH_LINE" >> "$PROFILE_FILE"
+    info "Hook agregado a $PROFILE_FILE ✓"
+else
+    info "Hook ya existe en $PROFILE_FILE, saltando."
+fi
+
+~/.config/hypr/splash.sh && info "current_splash.conf generado ✓"
+
 # ─── Listo ───────────────────────────────────────────────────────────────────
 echo ""
 echo -e "${GREEN}  ✓ Instalación completa.${NC}"
