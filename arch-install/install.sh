@@ -40,6 +40,7 @@ CREATE_USER=true
 USERNAME=""
 USER_PASS=""
 EXTRA_PKGS=""
+GPU_PKGS=""
 DM=""
 USE_HOME=false
 ROOT_SIZE=0
@@ -228,7 +229,7 @@ shrink_windows_partition() {
         err "Falló la actualización de la tabla de particiones."
 
     partprobe "$DISK"
-    sleep 1
+    udevadm settle
 
     # Actualizar variables de espacio libre
     FREE_START=$new_win_end_mb
@@ -547,7 +548,7 @@ configure_extras() {
     case "$extra_choice" in
         1)
             EXTRA_PKGS="hyprland waybar kitty rofi wofi hyprpaper wlogout \
-                        pipewire pipewire-pulse pipewire-alsa wireplumber \
+                        pipewire pipewire-pulse pipewire-alsa wireplumber pavucontrol \
                         xdg-desktop-portal-hyprland qt5-wayland qt6-wayland \
                         polkit-kde-agent dunst grim slurp swappy \
                         thunar tumbler ffmpegthumbnailer file-roller \
@@ -644,6 +645,60 @@ configure_home() {
 
     local home_gb=$(( avail - ROOT_SIZE ))
     log "Root: ${ROOT_SIZE} GB  →  Home: ~${home_gb} GB"
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DETECCIÓN DE GPU
+# ─────────────────────────────────────────────────────────────────────────────
+configure_gpu() {
+    title "Detección de GPU"
+
+    if ! command -v lspci &>/dev/null; then
+        warn "lspci no disponible, saltando detección de GPU."
+        return
+    fi
+
+    local gpu_info
+    gpu_info=$(lspci 2>/dev/null | grep -iE "VGA|3D controller|Display controller")
+
+    if [[ -z "$gpu_info" ]]; then
+        warn "No se detectaron GPUs. Instalando mesa genérico."
+        GPU_PKGS="mesa"
+        EXTRA_PKGS="$EXTRA_PKGS $GPU_PKGS"
+        return
+    fi
+
+    info "GPUs detectadas:"
+    while IFS= read -r line; do
+        info "  $line"
+    done <<< "$gpu_info"
+    echo ""
+
+    local has_nvidia=false has_amd=false has_intel=false
+    echo "$gpu_info" | grep -qi "nvidia"         && has_nvidia=true
+    echo "$gpu_info" | grep -qi "amd\|radeon"    && has_amd=true
+    echo "$gpu_info" | grep -qi "intel"          && has_intel=true
+
+    if $has_nvidia && $has_intel; then
+        GPU_PKGS="nvidia-open nvidia-utils nvidia-prime \
+                  intel-media-driver vulkan-intel mesa"
+        log "GPU híbrida Intel+NVIDIA → nvidia-open + nvidia-prime"
+        warn "Para gestionar el modo gráfico instalá envycontrol desde AUR después del reinicio: yay -S envycontrol"
+    elif $has_nvidia; then
+        GPU_PKGS="nvidia-open nvidia-utils mesa"
+        log "GPU NVIDIA → nvidia-open"
+    elif $has_amd; then
+        GPU_PKGS="mesa vulkan-radeon xf86-video-amdgpu libva-mesa-driver"
+        log "GPU AMD → mesa + amdgpu"
+    elif $has_intel; then
+        GPU_PKGS="mesa vulkan-intel intel-media-driver"
+        log "GPU Intel → mesa + intel"
+    else
+        GPU_PKGS="mesa"
+        warn "GPU no reconocida. Instalando mesa genérico."
+    fi
+
+    EXTRA_PKGS="$EXTRA_PKGS $GPU_PKGS"
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -761,7 +816,8 @@ do_partition() {
     fi
 
     partprobe "$DISK"
-    sleep 2
+    udevadm settle
+    sleep 1
     log "Tabla de particiones creada"
 }
 
@@ -790,7 +846,8 @@ do_partition_dualboot() {
     fi
 
     partprobe "$DISK"
-    sleep 2
+    udevadm settle
+    sleep 1
     log "Particiones creadas en espacio libre"
 }
 
@@ -867,8 +924,14 @@ do_format_mount() {
 do_pacstrap() {
     step "3" "Instalando sistema base (puede tardar varios minutos)"
 
+    info "Actualizando claves PGP..."
+    pacman-key --init
+    pacman-key --populate archlinux
+    pacman -Sy --noconfirm archlinux-keyring
+    log "Claves PGP actualizadas"
+
     local pkgs="base base-devel linux linux-firmware linux-headers \
-                networkmanager sudo nano vim git curl wget \
+                networkmanager iwd sudo nano vim git curl wget \
                 grub os-prober"
 
     [[ "$BOOT_MODE" == "UEFI" ]] && pkgs="$pkgs efibootmgr"
@@ -913,8 +976,9 @@ do_chroot_config() {
         echo "printf '127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t${HOSTNAME}.localdomain ${HOSTNAME}\n' >> /etc/hosts"
         echo ""
 
-        echo "# NetworkManager"
+        echo "# NetworkManager + iwd (WiFi)"
         echo "systemctl enable NetworkManager"
+        echo "systemctl enable iwd"
         echo ""
 
         echo "# Contraseña root"
@@ -1013,6 +1077,7 @@ main() {
     configure_locale
     configure_users
     configure_extras
+    configure_gpu
     configure_home
     show_summary
 
