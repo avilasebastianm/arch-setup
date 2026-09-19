@@ -22,6 +22,9 @@ configs/waybar/*Copy*
 **/.env
 **/secrets*
 **/token*
+**/wayvnc/
+*.pem
+*.key
 
 # Sistema
 .DS_Store

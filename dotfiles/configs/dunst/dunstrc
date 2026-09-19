@@ -103,7 +103,7 @@
 # ── Regla: ejecutar script en todas las notificaciones ───────────────────────
 [random_icon]
     summary = "*"
-    script  = /home/seba-dev/.config/dunst/random-skull.sh
+    script  = ~/.config/dunst/random-skull.sh
 
 
 # ── Reglas por app ────────────────────────────────────────────────────────────

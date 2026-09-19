@@ -260,3 +260,5 @@ zsh
 zsh-autosuggestions
 zsh-history-substring-search
 zsh-syntax-highlighting
+wayvnc
+libnotify

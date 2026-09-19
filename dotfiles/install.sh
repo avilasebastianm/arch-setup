@@ -156,6 +156,15 @@ if $DO_CONFIGS; then
 
     [[ -f "${HOME}/.config/hypr/splash.sh" ]] && \
         "${HOME}/.config/hypr/splash.sh" && info "current_splash.conf generado ✓"
+
+    # Scripts propios (iPad como monitor, wifi, etc.) → ~/.local/bin
+    if [[ -d "${DOTFILES_DIR}/bin" ]]; then
+        mkdir -p "${HOME}/.local/bin"
+        cp "${DOTFILES_DIR}/bin/"* "${HOME}/.local/bin/"
+        chmod +x "${HOME}/.local/bin/"*.sh
+        info "scripts en ~/.local/bin ✓"
+        info "Para usar el iPad como monitor corré: ipad-display-setup.sh (te pide usuario y contraseña)"
+    fi
 fi
 
 # ─── 6. .zshrc ───────────────────────────────────────────────────────────────
