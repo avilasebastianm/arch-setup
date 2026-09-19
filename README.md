@@ -33,6 +33,27 @@ cd arch-setup/dotfiles
 bash install.sh
 ```
 
+### iPad como monitor extra (opcional)
+
+Podés usar un iPad como segunda pantalla de Hyprland por VNC ([wayvnc](https://github.com/any1/wayvnc)).
+El `install.sh` deja los scripts en `~/.local/bin` y `wayvnc` se instala con los paquetes.
+
+1. **Configurá tu usuario y contraseña** (una sola vez). El repo no trae credenciales: el script las pide y genera las claves de tu máquina en `~/.config/wayvnc/`.
+
+   ```bash
+   ipad-display-setup.sh
+   ```
+
+2. **Activá o desactivá el display** con `Super+Shift+I` o haciendo click en el ícono del iPad en Waybar.
+3. **Conectate desde el iPad** con una app VNC (Jump Desktop, bVNC, etc.) a la IP y puerto que muestra la notificación, con el usuario y contraseña del paso 1.
+
+Notas:
+
+- El iPad y la PC tienen que estar en la misma red.
+- La resolución por defecto es `2430x1822@60`. Para tu modelo, exportá `IPAD_RES` (por ejemplo `IPAD_RES=2388x1668@60`) o cambiá el valor en `~/.local/bin/ipad-display-on.sh`.
+- **Seguridad:** wayvnc queda escuchando en todas las interfaces (`0.0.0.0`) del puerto elegido (5900 por defecto), con usuario, contraseña y TLS obligatorios. Usá una contraseña fuerte y no lo expongas a internet ni lo dejes abierto en redes públicas. Si no lo usás, dejá el display apagado.
+- Nunca subas `~/.config/wayvnc/` a un repo: tiene tu contraseña y tus claves privadas.
+
 ---
 
 ## arch-install
