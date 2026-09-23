@@ -153,7 +153,6 @@
     "format": "⏻",
   },
   "battery": {
-    "bat": "BAT1",
     "interval": 30,
     "states": {
       "warning": 30,

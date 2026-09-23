@@ -27,7 +27,7 @@ chmod +x install.sh
 ```
 .
 ├── install.sh          # Script de instalación
-├── bin/                # Scripts para ~/.local/bin (iPad como monitor)
+├── bin/                # Scripts para ~/.local/bin (iPad como monitor, test de netpulse)
 ├── configs/            # Configs de ~/.config/
 │   ├── hypr/
 │   ├── waybar/

@@ -262,3 +262,5 @@ zsh-history-substring-search
 zsh-syntax-highlighting
 wayvnc
 libnotify
+networkmanager
+ydotool

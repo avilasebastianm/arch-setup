@@ -90,7 +90,7 @@ if $DO_PKGS; then
     log "Instalando Hyprland y dependencias esenciales..."
     HYPR_CORE=(
         hyprland hyprpaper
-        waybar kitty rofi dunst wlogout
+        waybar kitty rofi dunst
         pipewire pipewire-pulse pipewire-alsa wireplumber pavucontrol
         brightnessctl playerctl pamixer
         grim slurp
@@ -165,6 +165,9 @@ if $DO_CONFIGS; then
         info "scripts en ~/.local/bin ✓"
         info "Para usar el iPad como monitor corré: ipad-display-setup.sh (te pide usuario y contraseña)"
     fi
+
+    # Carpetas que usan los binds de captura y el wallpaper de respaldo
+    mkdir -p "${HOME}/Pictures/Screenshots" "${HOME}/.local/share/wallpapers"
 fi
 
 # ─── 6. .zshrc ───────────────────────────────────────────────────────────────
