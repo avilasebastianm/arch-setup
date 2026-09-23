@@ -4,7 +4,6 @@
 # el valor por defecto de abajo (ej. iPad Pro 11": 2388x1668@60, iPad Air: 2360x1640@60).
 set -e
 
-RES="${IPAD_RES:-2430x1822@60}"
 CFG="${XDG_CONFIG_HOME:-$HOME/.config}/wayvnc/config"
 
 if [ ! -f "$CFG" ]; then
@@ -12,10 +11,6 @@ if [ ! -f "$CFG" ]; then
     echo "No existe $CFG. Corré primero: ipad-display-setup.sh"
     exit 1
 fi
-
-# El iPad va a la derecha de los monitores existentes
-POS_X=$(hyprctl monitors -j | jq -r '[.[] | select(.name | startswith("HEADLESS") | not) | (.x + (.width / .scale))] | max | floor')
-POS="${POS_X}x0"
 
 MON=$(hyprctl monitors -j | jq -r '[.[] | select(.name | startswith("HEADLESS"))][0].name // empty')
 
@@ -25,7 +20,8 @@ if [ -z "$MON" ]; then
     MON=$(hyprctl monitors -j | jq -r '[.[] | select(.name | startswith("HEADLESS"))][0].name')
 fi
 
-hyprctl keyword monitor "$MON,$RES,$POS,1"
+# Resolución/escala guardadas (IPAD_RES las pisa); la posición (abajo) la calcula ipad-display-res.sh
+if [ -n "$IPAD_RES" ]; then ipad-display-res.sh "$IPAD_RES" >/dev/null; else ipad-display-res.sh apply >/dev/null; fi
 
 if pgrep -x wayvnc >/dev/null; then
     pkill -x wayvnc

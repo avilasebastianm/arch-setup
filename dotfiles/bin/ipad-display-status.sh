@@ -7,5 +7,5 @@ if hyprctl monitors -j | jq -e '[.[] | select(.name | startswith("HEADLESS"))] |
     PORT=$(grep -oP '^port=\K\d+' "$CFG" 2>/dev/null || echo 5900)
     printf '{"text":"󰓶","tooltip":"iPad display activo — %s:%s","class":"active"}\n' "${IP:-?}" "$PORT"
 else
-    printf '{"text":"󰓶","tooltip":"iPad display apagado (click para activar)","class":"inactive"}\n'
+    printf '{"text":"󰓶","tooltip":"iPad display apagado (click: menú · click derecho: activar)","class":"inactive"}\n'
 fi

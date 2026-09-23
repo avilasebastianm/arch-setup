@@ -76,6 +76,7 @@ window#waybar {
 #custom-logo,
 #custom-cpu,
 #custom-gpu,
+#custom-netpulse,
 #memory,
 #network,
 #pulseaudio,
@@ -114,6 +115,22 @@ window#waybar {
 
 #custom-gpu {
   color: #e0af68;
+}
+
+#custom-netpulse {
+  background-color: transparent;
+}
+
+#custom-netpulse.good {
+  color: #9ece6a;
+}
+
+#custom-netpulse.warn {
+  color: #e0af68;
+}
+
+#custom-netpulse.bad {
+  color: #f7768e;
 }
 
 #memory {

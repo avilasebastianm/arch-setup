@@ -20,6 +20,8 @@
     "custom/sep",
     "custom/gpu",
     "custom/sep",
+    "custom/netpulse",
+    "custom/sep",
     "mpris",
   ],
   "modules-center": [
@@ -119,6 +121,11 @@
     "interval": 5,
     "tooltip": true,
   },
+  "custom/netpulse": {
+    "exec": "~/.config/waybar/scripts/netpulse.sh",
+    "return-type": "json",
+    "tooltip": true,
+  },
   "memory": {
     "format": "󰍛 {used:0.1f}Gi",
     "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB",
@@ -145,6 +152,7 @@
     "format": "⏻",
   },
   "battery": {
+    "bat": "BAT1",
     "interval": 30,
     "states": {
       "warning": 30,
@@ -160,7 +168,8 @@
     "exec": "ipad-display-status.sh",
     "interval": 5,
     "return-type": "json",
-    "on-click": "ipad-display-toggle.sh",
+    "on-click": "ipad-display-menu.sh",
+    "on-click-right": "ipad-display-toggle.sh",
     "tooltip": true,
   },
   "custom/notification": {
