@@ -91,6 +91,7 @@
     "format-ethernet": "󰈀 ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}",
     "tooltip-format": "{ifname} — {ipaddr}\n{essid} {signalStrength}%",
     "format-disconnected": "󰞃 desconectado",
+    "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
   },
   "clock": {
     "timezone": "America/Argentina/Buenos_Aires",
